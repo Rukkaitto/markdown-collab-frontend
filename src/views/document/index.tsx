@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
+import ReactMarkdown from "react-markdown";
+import rehypeHighlight from "rehype-highlight";
 import { useParams } from "react-router";
 import io, { Socket } from "socket.io-client";
 
@@ -19,7 +21,7 @@ const Document = () => {
             .catch(error => {
                 console.error(error);
             });
-        socket.current = io("http://localhost:8080")
+        socket.current = io(API_URL!)
 
         socket.current.on("contentUpdate", ({id: updatedId, content: newContent}) => {
             if (updatedId === id) {
@@ -36,10 +38,12 @@ const Document = () => {
     }
 
     return (
-        <div className="p-3 h-screen">
+        <div className="p-3 h-screen flex">
             <textarea className="p-3 border w-1/2 h-full" value={content} onChange={handleOnChange}>
-
             </textarea>
+            <div className="p-3 w-1/2">
+                <ReactMarkdown rehypePlugins={[[rehypeHighlight, {ignoreMissing: true}]]} children={content}></ReactMarkdown>
+            </div>
         </div>
     );
 }
