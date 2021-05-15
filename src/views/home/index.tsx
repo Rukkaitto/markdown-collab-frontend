@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useCallback } from "react";
+import { useHistory } from "react-router";
 
 const Home = () => {
-    const API_URL = process.env.REACT_APP_API_URL;
+    const history = useHistory();
+
+    const handleOnClick = useCallback(() => {
+        history.push('/create');
+    }, [history]);
+
     return (
         <div>
-            {API_URL}
+            <button 
+                className="rounded-lg p-2 text-white bg-green-400" 
+                onClick={handleOnClick}
+            >
+                Create a document
+            </button>
         </div>
     );
 }
