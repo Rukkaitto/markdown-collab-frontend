@@ -23,10 +23,8 @@ const Document = () => {
             });
         socket.current = io(API_URL!)
 
-        socket.current.on("contentUpdate", ({id: updatedId, content: newContent}) => {
-            if (updatedId === id) {
-                setContent(newContent);
-            }
+        socket.current.on(id, ({content: newContent}) => {
+            setContent(newContent);
         });
     }, [id, API_URL, socket]);
 
