@@ -2,10 +2,10 @@ version: '3'
 services: 
     react:
         build: .
-        container_name: react-app
+        container_name: markdown-collab-react
     nginx:
         image: nginx:latest
-        container_name: nginx
+        container_name: markdown-collab-nginx
         volumes: 
             - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
         ports:
