@@ -4,17 +4,18 @@ import Document from "../views/document";
 import Create from "../views/create";
 
 const Router = () => {
-  const baseUrl = "/markdown-collab";
+  const BASE_URL = process.env.REACT_APP_BASE_URL!;
+
   return (
     <BrowserRouter>
       <Switch>
-        <Route path={`${baseUrl}/create`}>
+        <Route path={`/${BASE_URL}/create`}>
           <Create />
         </Route>
-        <Route path={`${baseUrl}/:id`}>
+        <Route path={`/${BASE_URL}/:id`}>
           <Document />
         </Route>
-        <Route path={`${baseUrl}/`}>
+        <Route path={`/${BASE_URL}`}>
           <Home />
         </Route>
       </Switch>

@@ -6,13 +6,14 @@ const Create = () => {
     const history = useHistory();
     const [title, setTitle] = useState("");
     const API_URL = process.env.REACT_APP_API_URL;
+    const BASE_URL = process.env.REACT_APP_BASE_URL!;
 
     const handleOnClick = () => {
         axios.post(`${API_URL}/api/documents`, { title, content: "" })
             .then(response => response.data)
             .then(response => {
                 const { _id } = response;
-                history.push(`/${_id}`);
+                history.push(`${BASE_URL}/${_id}`);
             })
             .catch(error => {
                 console.error(error);
