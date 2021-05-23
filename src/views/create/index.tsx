@@ -13,7 +13,7 @@ const Create = () => {
             .then(response => response.data)
             .then(response => {
                 const { _id } = response;
-                history.push(`${BASE_URL}/${_id}`);
+                history.push(`/${BASE_URL}/${_id}`);
             })
             .catch(error => {
                 console.error(error);

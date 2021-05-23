@@ -6,8 +6,8 @@ const Home = () => {
     const history = useHistory();
 
     const handleOnClick = useCallback(() => {
-        history.push(`${BASE_URL}/create`);
-    }, [history]);
+        history.push(`/${BASE_URL}/create`);
+    }, [history, BASE_URL]);
 
     return (
         <div>
