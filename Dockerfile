@@ -1,25 +1,13 @@
-FROM node:12.4
+FROM node:12 
 
-# React
-
-WORKDIR /usr/src/app
-
-COPY package*.json ./
-
-RUN npm install
+WORKDIR /app
 
 COPY . .
 
-RUN npm run build
+RUN npm install && npm run build
 
-# Nginx
+RUN npm install serve -g
 
-COPY --from=build /usr/src/app/build /usr/share/nginx.html
+CMD ["serve", "-s", "build"]
 
-RUN rm /etc/nginx/conf.d/default.conf
-
-COPY nginx/nginx.conf /etc/nginx/conf.d
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 5000
