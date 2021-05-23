@@ -4,16 +4,17 @@ import Document from "../views/document";
 import Create from "../views/create";
 
 const Router = () => {
+  const baseUrl = "/markdown-collab";
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/create">
+        <Route path={`${baseUrl}/create`}>
           <Create />
         </Route>
-        <Route path="/:id">
+        <Route path={`${baseUrl}/:id`}>
           <Document />
         </Route>
-        <Route path="/">
+        <Route path={`${baseUrl}/`}>
           <Home />
         </Route>
       </Switch>
