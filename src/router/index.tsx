@@ -4,18 +4,16 @@ import Document from "../views/document";
 import Create from "../views/create";
 
 const Router = () => {
-  const BASE_URL = process.env.REACT_APP_BASE_URL!;
-
   return (
     <BrowserRouter>
       <Switch>
-        <Route path={`/${BASE_URL}/create`}>
+        <Route path="/create">
           <Create />
         </Route>
-        <Route path={`/${BASE_URL}/:id`}>
+        <Route path="/:id">
           <Document />
         </Route>
-        <Route path={`/${BASE_URL}`}>
+        <Route path="/">
           <Home />
         </Route>
       </Switch>
